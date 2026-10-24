@@ -1,28 +1,10 @@
-from dataclasses import dataclass
+orders = [
+    {"id": 1, "total": 120, "paid": True},
+    {"id": 2, "total": 80, "paid": True},
+    {"id": 3, "total": 200, "paid": False},
+    {"id": 4, "total": 150, "paid": True},
+]
 
-@dataclass
-class Address:
-    street: str
-    city: str
-    state: str
-    zip: str
+orders_filtered = [o["id"] for o in orders if o["paid"] and o["total"] > 100]
+print(orders_filtered)  # Output: [1, 4]
 
-@dataclass
-class User:
-    name: str
-    age: int
-    address: Address
-
-# Tworzenie obiektu
-obj = User(
-    name="John Doe",
-    age=30,
-    address=Address(
-        street="123 Main St",
-        city="Anytown",
-        state="CA",
-        zip="12345"
-    )
-)
-
-print(obj.address.city)
